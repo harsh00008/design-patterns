@@ -1,35 +1,37 @@
 package state;
 
-public class HasPin implements IState{
+public class HasPin implements State{
 
-	ATMMachine atmMachine;
+	ATMMachine tempAtmMachine;
 	
 	public HasPin(ATMMachine atmMachine){
-		atmMachine = atmMachine;
+		tempAtmMachine = atmMachine;
 	}
 	
 	@Override
-	public void dispenseCash() {
-		// TODO Auto-generated method stub
-		
+	public void dispenseCash(int amount) {
+		if(tempAtmMachine.isPinCorrect){
+			System.out.println("Dispensing Cash");
+			if( (tempAtmMachine.cash - amount) >= 0 ){
+				System.out.println("Take your cash of $"+amount);
+				if( tempAtmMachine.cash == 0 ){
+					tempAtmMachine.setCurrentState(tempAtmMachine.noCash);
+				}
+			}else{
+				System.out.println("You cannot withdraw more than $" + tempAtmMachine.cash);
+			}
+		}
 	}
 
 	@Override
 	public void enterPin(int pin) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Illegal Operation");
 	}
 
-	@Override
-	public void enterAmount(int amount) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void loadCash(int amount) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Illegal Operation");
 	}
 
 }

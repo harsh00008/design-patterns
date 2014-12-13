@@ -1,11 +1,12 @@
 package state;
 
-public class ATMMachine {
-	IState noCash;
-	IState hasCash;
-	IState hasPin;
-	IState dispenseCash;
-	IState currentState;
+public class ATMMachine{
+	State noCash;
+	State hasCash;
+	State hasPin;
+	State dispenseCash;
+	State currentState;
+	boolean isPinCorrect = false;
 	
 	int cash;
 	
@@ -13,15 +14,46 @@ public class ATMMachine {
 		cash = 0;
 		noCash = new NoCash(this);
 		hasCash = new HasCash(this);
-		noCash = new NoCash(this);
+		hasPin = new HasPin(this);
+		dispenseCash = new DispenseCash(this);
 		currentState = noCash;
 	}
 	
-	public void setCurrentState(IState state){
+	public void setCurrentState(State state){
 		currentState = state;
 	}
 	
-	public IState getCurrentState(){
+	public State getCurrentState(){
 		return currentState;
 	}
+	
+	public int getCash(){
+		return cash;
+	}
+	
+	public boolean isValidPin(int pin){
+		if(pin == 144 ){
+			isPinCorrect = true;
+			return true;
+		}
+		isPinCorrect = false;
+		return false;
+	}
+
+	
+	public void redeem(int amount) {
+		currentState.dispenseCash(amount);	
+	}
+
+	
+	public void addCash(int amount) {
+		cash = amount;
+		currentState.loadCash(amount);
+	}
+
+	
+	public void enterAtmPin(int pin) {
+		currentState.enterPin(pin);
+	}
+	
 }

@@ -1,29 +1,26 @@
 package state;
 
-public class DispenseCash implements IState{
+public class DispenseCash implements State{
 
+	ATMMachine tempAtmMachine;
+	
+	public DispenseCash(ATMMachine atmMachine){
+		tempAtmMachine = atmMachine;
+	}
+	
 	@Override
-	public void dispenseCash() {
-		// TODO Auto-generated method stub
-		
+	public void dispenseCash(int amount) {
+		System.out.println("Already dispensed cash");
 	}
 	
 	@Override
 	public void enterPin(int pin) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Illegal Operation");
 	}
-
-	@Override
-	public void enterAmount(int amount) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void loadCash(int amount) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Cannot load money right now.");
 	}
 
 }

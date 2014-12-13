@@ -1,37 +1,28 @@
 package state;
 
-public class NoCash implements IState{
+public class NoCash implements State{
 	
-	ATMMachine atmMachine;
+	ATMMachine tempAtmMachine;
 	
 	public NoCash(ATMMachine atmMachine){
-		atmMachine = atmMachine;
+		tempAtmMachine = atmMachine;
 	}
 
 	@Override
-	public void dispenseCash() {
+	public void dispenseCash(int amount) {
 		System.out.println("Opps. I have no money to dispense");
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void loadCash(int cash) {
-		
-		// TODO Auto-generated method stub
-		
+		System.out.println("Added $" + cash + " Cash to ATM");
+		tempAtmMachine.setCurrentState(tempAtmMachine.hasCash);
 	}
 
 	@Override
 	public void enterPin(int pin) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("I'm sorry, the machine is out of cash!");
 	}
 
-	@Override
-	public void enterAmount(int amount) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
