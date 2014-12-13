@@ -1,4 +1,11 @@
 design-patterns
 ===============
 
-Implementing design patterns for cmpe 202
+Implementing design patterns in Java
+
+Patterns :
+- Adapter
+- Factory
+- Composite
+- Observer
+- Decorator
