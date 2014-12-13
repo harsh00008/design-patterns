@@ -9,3 +9,4 @@ Patterns :
 - Composite
 - Observer
 - Decorator
+- State
