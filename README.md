@@ -10,3 +10,4 @@ Patterns :
 - Observer
 - Decorator
 - State
+- Strategy
