@@ -11,3 +11,4 @@ Patterns :
 - Decorator
 - State
 - Strategy
+- Command
