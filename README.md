@@ -12,3 +12,4 @@ Patterns :
 - State
 - Strategy
 - Command
+- Chain Of Responsibility Version 1
